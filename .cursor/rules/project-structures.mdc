@@ -1,0 +1,193 @@
+---
+alwaysApply: true
+---
+Tech Stack
+
+Expo (latest)
+
+React Native
+
+TypeScript
+
+Expo Router
+
+SQLite (expo-sqlite + better-sqlite-3 polyfill)
+
+Zustand or Context for state management
+
+AsyncStorage for theme & UI preferences
+
+expo-image-picker
+
+expo-file-system
+
+expo-camera (for QR scanning – optional)
+
+📌 CORE FEATURES
+🔐 1. Auth Screens
+
+Build 2 screens:
+
+Login
+
+Register
+
+Design should match the mockups:
+
+White clean minimalist UI
+
+Rounded inputs
+
+Blue primary button
+
+“Sign in with Google” optional (Mock only)
+
+📦 2. Products Screen
+
+Tabs:
+
+All
+
+Clothing
+
+Electronics
+
+Home
+
+(Dynamic categories from DB)
+
+Each product card must show:
+
+Image
+
+Name
+
+“X stock” text
+
+Category
+
+Right arrow > “details screen”
+
+Floating Action Button (“+”) → opens Add Product screen.
+
+➕ 3. Add Product Screen
+
+Fields:
+
+Image Picker
+
+Product Name
+
+Price
+
+Stock
+
+Category (dropdown)
+
+SAVE button
+
+SAVE → product added to SQLite database.
+
+📊 4. Product Detail / Stock Update Screen
+
+Design dark-themed as in the mockup:
+
+Current stock: X
+
+“– 25 +” stock adjuster
+
+CANCEL / UPDATE buttons
+
+UPDATE → save stock to database.
+
+💾 5. SQLite Database Structure
+products (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  price REAL NOT NULL,
+  stock INTEGER NOT NULL,
+  category TEXT NOT NULL,
+  imageUri TEXT
+)
+
+🎨 6. Theme System (Light / Dark Mode)
+
+Use useColorScheme()
+
+Custom theme provider (Zustand or Context)
+
+All components must support dark / light colors
+
+Save user preference with AsyncStorage
+
+🔍 7. Optional: QR Code Scanner
+
+Scanner reads product ID
+
+Opens product detail
+
+“Find product with QR” button on Products screen
+
+Use expo-barcode-scanner.
+
+📱 UI / UX REQUIREMENTS
+
+Pixel-perfect according to the uploaded mockups
+
+Smooth shadows
+
+iOS rounded feel
+
+Modern padding (16–20px)
+
+List items must be clean + minimal
+
+Loading indicators
+
+Error handling
+
+Responsive on all screen sizes
+
+📦 PROJECT GENERATION
+
+Generate:
+
+/app folder using Expo Router
+
+/components folder
+
+/hooks
+
+/db (sqlite init + services)
+
+/store
+
+/theme
+
+/types
+
+Clean architecture + reusable UI components
+
+🎯 TASK
+
+Generate the entire project structure, including:
+
+✔ Working SQLite CRUD
+✔ All pages
+✔ Navigation (Expo Router)
+✔ Dark/Light theme
+✔ Dummy product seed data
+✔ Ready-to-run Expo project code
+✔ Example components (ProductCard, FabButton, InputField, CategoryTabs, etc.)
+
+⚡ FIRST ACTION
+
+Create the folder structure
+
+Initialize SQLite
+
+Generate the base screens (Login, Products, AddProduct, ProductDetail)
+
+Create components
+
+Add navigation + theme
