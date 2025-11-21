@@ -8,6 +8,7 @@ import {
   Image,
   Alert,
   Platform,
+  TextInput,
 } from 'react-native';
 import { router } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
@@ -141,7 +142,7 @@ export default function AddProductScreen() {
           <View style={styles.imagePlaceholder}>
             <Ionicons name="camera-outline" size={40} color={colors.textSecondary} />
             <Text style={[styles.imagePlaceholderText, { color: colors.textSecondary }]}>
-              Tap to add image
+              Add Image
             </Text>
           </View>
         )}
@@ -154,13 +155,20 @@ export default function AddProductScreen() {
         onChangeText={setName}
       />
 
-      <InputField
-        label="Price"
-        placeholder="Enter price"
-        value={price}
-        onChangeText={setPrice}
-        keyboardType="decimal-pad"
-      />
+      <View style={styles.priceContainer}>
+        <Text style={[styles.label, { color: colors.text }]}>Price</Text>
+        <View style={[styles.priceInputWrapper, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+          <TextInput
+            style={[styles.priceInput, { color: colors.text }]}
+            placeholder="Enter price"
+            placeholderTextColor={colors.textSecondary}
+            value={price}
+            onChangeText={setPrice}
+            keyboardType="decimal-pad"
+          />
+          <Text style={[styles.currencySymbol, { color: colors.textSecondary }]}>$</Text>
+        </View>
+      </View>
 
       <InputField
         label="Stock"
@@ -274,6 +282,26 @@ const styles = StyleSheet.create({
   imagePlaceholderText: {
     marginTop: 8,
     fontSize: 14,
+  },
+  priceContainer: {
+    marginBottom: 16,
+  },
+  priceInputWrapper: {
+    height: 50,
+    borderRadius: 12,
+    borderWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    marginTop: 8,
+  },
+  priceInput: {
+    flex: 1,
+    fontSize: 16,
+  },
+  currencySymbol: {
+    fontSize: 16,
+    marginLeft: 8,
   },
   categoryContainer: {
     marginBottom: 16,

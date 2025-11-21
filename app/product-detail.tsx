@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Image,
   ActivityIndicator,
   Alert,
 } from 'react-native';
@@ -110,61 +109,20 @@ export default function ProductDetailScreen() {
     <View style={[styles.container, { backgroundColor: screenColors.background }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={handleCancel}>
-          <Ionicons name="close" size={28} color={screenColors.text} />
+          <Ionicons name="arrow-back" size={24} color={screenColors.text} />
         </TouchableOpacity>
+        <Text style={[styles.headerTitle, { color: screenColors.text }]}>
+          {product.name}
+        </Text>
+        <View style={{ width: 24 }} />
       </View>
 
       <View style={styles.content}>
-        {product.imageUri ? (
-          <Image source={{ uri: product.imageUri }} style={styles.image} />
-        ) : (
-          <View
-            style={[
-              styles.imagePlaceholder,
-              { backgroundColor: screenColors.surface },
-            ]}
-          >
-            <Ionicons
-              name="image-outline"
-              size={60}
-              color={screenColors.textSecondary}
-            />
-          </View>
-        )}
-
-        <Text style={[styles.productName, { color: screenColors.text }]}>
-          {product.name}
+        <Text style={[styles.stockLabel, { color: screenColors.text }]}>
+          Current stock: {stock}
         </Text>
-        <Text style={[styles.category, { color: screenColors.textSecondary }]}>
-          {product.category}
-        </Text>
-        <Text style={[styles.price, { color: screenColors.primary }]}>
-          ${product.price.toFixed(2)}
-        </Text>
-
-        <View style={styles.stockSection}>
-          <Text style={[styles.stockLabel, { color: screenColors.text }]}>
-            Current stock:
-          </Text>
-          <Text style={[styles.stockValue, { color: screenColors.text }]}>
-            {stock}
-          </Text>
-        </View>
 
         <View style={styles.stockAdjuster}>
-          <TouchableOpacity
-            style={[
-              styles.adjustButton,
-              { backgroundColor: screenColors.surface },
-            ]}
-            onPress={() => adjustStock(-25)}
-            activeOpacity={0.7}
-          >
-            <Text style={[styles.adjustButtonText, { color: screenColors.text }]}>
-              – 25
-            </Text>
-          </TouchableOpacity>
-
           <TouchableOpacity
             style={[
               styles.adjustButton,
@@ -174,7 +132,7 @@ export default function ProductDetailScreen() {
             activeOpacity={0.7}
           >
             <Text style={[styles.adjustButtonText, { color: screenColors.text }]}>
-              – 1
+              –
             </Text>
           </TouchableOpacity>
 
@@ -193,20 +151,7 @@ export default function ProductDetailScreen() {
             activeOpacity={0.7}
           >
             <Text style={[styles.adjustButtonText, { color: screenColors.text }]}>
-              + 1
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[
-              styles.adjustButton,
-              { backgroundColor: screenColors.surface },
-            ]}
-            onPress={() => adjustStock(25)}
-            activeOpacity={0.7}
-          >
-            <Text style={[styles.adjustButtonText, { color: screenColors.text }]}>
-              + 25
+              +
             </Text>
           </TouchableOpacity>
         </View>
@@ -241,81 +186,54 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 20,
     paddingTop: 60,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '600',
   },
   content: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 20,
   },
-  image: {
-    width: 200,
-    height: 200,
-    borderRadius: 16,
-    marginBottom: 24,
-  },
-  imagePlaceholder: {
-    width: 200,
-    height: 200,
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  productName: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  category: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  price: {
-    fontSize: 24,
-    fontWeight: '600',
-    marginBottom: 40,
-  },
-  stockSection: {
-    alignItems: 'center',
-    marginBottom: 32,
-  },
   stockLabel: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  stockValue: {
-    fontSize: 48,
-    fontWeight: 'bold',
+    fontSize: 18,
+    marginBottom: 48,
+    fontWeight: '500',
   },
   stockAdjuster: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    justifyContent: 'center',
+    gap: 20,
     marginBottom: 40,
   },
   adjustButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 12,
+    width: 80,
+    height: 80,
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
   },
   adjustButtonText: {
-    fontSize: 20,
+    fontSize: 36,
     fontWeight: '600',
   },
   stockDisplay: {
-    width: 80,
-    height: 60,
-    borderRadius: 12,
+    width: 120,
+    height: 80,
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
   },
   stockDisplayText: {
-    fontSize: 24,
+    fontSize: 36,
     fontWeight: 'bold',
   },
   footer: {

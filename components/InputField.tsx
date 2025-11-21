@@ -26,9 +26,9 @@ export const InputField: React.FC<InputFieldProps> = ({
         style={[
           styles.input,
           {
-            backgroundColor: colors.surface,
+            backgroundColor: colorScheme === 'light' ? '#FFFFFF' : colors.surface,
             color: colors.text,
-            borderColor: error ? colors.error : colors.border,
+            borderColor: error ? colors.error : (colorScheme === 'light' ? '#E0E0E0' : colors.border),
           },
           style,
         ]}
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     fontSize: 16,
     borderWidth: 1,
+    backgroundColor: '#FFFFFF',
   },
   error: {
     fontSize: 12,

@@ -52,16 +52,12 @@ export default function LoginScreen() {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.header}>
-          <Text style={[styles.title, { color: colors.text }]}>Welcome Back</Text>
-          <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
-            Sign in to continue
-          </Text>
+          <Text style={[styles.title, { color: colors.text }]}>ShopSync</Text>
         </View>
 
         <View style={styles.form}>
           <InputField
-            label="Email"
-            placeholder="Enter your email"
+            placeholder="Email"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -69,26 +65,39 @@ export default function LoginScreen() {
             autoComplete="email"
           />
 
-          <InputField
-            label="Password"
-            placeholder="Enter your password"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            autoCapitalize="none"
-            autoComplete="password"
-          />
+          <View style={styles.passwordContainer}>
+            <InputField
+              placeholder="Password"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="password"
+            />
+            <Text
+              style={[styles.forgotPassword, { color: colors.primary }]}
+              onPress={() => {}}
+            >
+              Forgot password?
+            </Text>
+          </View>
 
           {error ? (
             <Text style={[styles.errorText, { color: colors.error }]}>{error}</Text>
           ) : null}
 
           <Button
-            title="Sign In"
+            title="LOG IN"
             onPress={handleLogin}
             loading={loading}
             style={styles.button}
           />
+
+          <View style={styles.separator}>
+            <View style={[styles.separatorLine, { backgroundColor: colors.border }]} />
+            <Text style={[styles.separatorText, { color: colors.textSecondary }]}>or</Text>
+            <View style={[styles.separatorLine, { backgroundColor: colors.border }]} />
+          </View>
 
           <Button
             title="Sign in with Google"
@@ -125,16 +134,35 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    marginBottom: 40,
+    marginBottom: 48,
     alignItems: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
-    marginBottom: 8,
   },
-  subtitle: {
-    fontSize: 16,
+  passwordContainer: {
+    position: 'relative',
+  },
+  forgotPassword: {
+    fontSize: 14,
+    textAlign: 'right',
+    marginTop: -12,
+    marginBottom: 16,
+    fontWeight: '500',
+  },
+  separator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 24,
+  },
+  separatorLine: {
+    flex: 1,
+    height: 1,
+  },
+  separatorText: {
+    marginHorizontal: 16,
+    fontSize: 14,
   },
   form: {
     width: '100%',

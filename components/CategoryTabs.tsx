@@ -32,7 +32,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
             style={[
               styles.tab,
               {
-                backgroundColor: isSelected ? colors.primary : colors.surface,
+                backgroundColor: isSelected ? colors.primary : '#FFFFFF',
               },
             ]}
             onPress={() => onSelectCategory(category)}
@@ -42,7 +42,7 @@ export const CategoryTabs: React.FC<CategoryTabsProps> = ({
               style={[
                 styles.tabText,
                 {
-                  color: isSelected ? '#FFFFFF' : colors.text,
+                  color: isSelected ? '#FFFFFF' : colors.textSecondary,
                 },
               ]}
             >

@@ -6,8 +6,10 @@ import {
   FlatList,
   RefreshControl,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { ProductCard, FabButton, CategoryTabs } from '@/components';
 import { Product } from '@/types';
 import {
@@ -92,6 +94,16 @@ export default function ProductsScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.header, { backgroundColor: colors.background }]}>
+        <TouchableOpacity>
+          <Ionicons name="menu" size={24} color={colors.text} />
+        </TouchableOpacity>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>Products</Text>
+        <TouchableOpacity>
+          <Ionicons name="ellipsis-vertical" size={24} color={colors.text} />
+        </TouchableOpacity>
+      </View>
+
       <CategoryTabs
         categories={categories}
         selectedCategory={selectedCategory}
@@ -130,6 +142,18 @@ export default function ProductsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingTop: 60,
+    paddingBottom: 16,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '600',
   },
   center: {
     flex: 1,

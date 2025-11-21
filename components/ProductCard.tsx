@@ -52,11 +52,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) =>
         <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>
           {product.name}
         </Text>
-        <Text style={[styles.category, { color: colors.textSecondary }]}>
-          {product.category}
-        </Text>
-        <Text style={[styles.stock, { color: colors.primary }]}>
+        <Text style={[styles.stock, { color: colors.textSecondary }]}>
           {product.stock} stock
+        </Text>
+        <Text style={[styles.category, { color: colors.textSecondary }]}>
+          Stock : {product.category}
         </Text>
       </View>
       <Ionicons
@@ -101,15 +101,15 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: '600',
-    marginBottom: 4,
-  },
-  category: {
-    fontSize: 14,
-    marginBottom: 4,
+    marginBottom: 6,
   },
   stock: {
     fontSize: 14,
-    fontWeight: '500',
+    marginBottom: 4,
+  },
+  category: {
+    fontSize: 12,
+    color: '#999',
   },
   arrow: {
     marginLeft: 8,
